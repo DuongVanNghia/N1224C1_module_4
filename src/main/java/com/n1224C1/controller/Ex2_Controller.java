@@ -1,4 +1,4 @@
-package com.n1224C1;
+package com.n1224C1.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
