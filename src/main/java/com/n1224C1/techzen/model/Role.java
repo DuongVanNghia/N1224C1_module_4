@@ -4,23 +4,22 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-//import javax.persistence.*;
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Builder
-@Entity
-public class Clazz {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    @Column(columnDefinition = "varchar(50)")
-    String name;
-    @OneToMany(mappedBy = "clazz")
-    List<Student> students;
+    Long id;
+
+    String name; // ADMIN, MEMBER,...
+
+    @ManyToMany(mappedBy = "roles") // Bên này sẽ không tạo cột mà chỉ ánh xạ theo bảng trung gian
+    Set<User> users = new HashSet<>();
 }

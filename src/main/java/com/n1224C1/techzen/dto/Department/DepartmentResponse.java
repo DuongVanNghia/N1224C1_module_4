@@ -1,0 +1,16 @@
+package com.n1224C1.techzen.dto.Department;
+
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+@Table(name = "department") // Đảm bảo bảng tồn tại trong DB
+@Data
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class DepartmentResponse {
+    private Integer id;
+    private String name;
+}

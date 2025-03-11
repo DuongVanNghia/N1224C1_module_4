@@ -10,6 +10,8 @@ import com.n1224C1.techzen.service.IStudentService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,13 +23,14 @@ public class EmployeeService implements IEmployeeService {
     IEmployeeRepository employeeRepository ;
 
     @Override
-    public List<Employee> findByAttributes(EmployeeSearchRequest employeeSearchRequest) {
+    public Page<Employee> findByAttributes(EmployeeSearchRequest employeeSearchRequest, Pageable pageable) {
         return employeeRepository.findByAttribute(employeeSearchRequest.getName(),employeeSearchRequest.getDobFrom(),
                 employeeSearchRequest.getDobTo(),
                 employeeSearchRequest.getGender() == null ? null : employeeSearchRequest.getGender().toString(),
                 employeeSearchRequest.getPhone(),
                 employeeSearchRequest.getDepartmentId(),
-                employeeSearchRequest.getSalaryRange());
+                employeeSearchRequest.getSalaryRange(),
+                pageable);
     }
 
     @Override

@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
-//import javax.persistence.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,12 +11,12 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @Entity
-public class Clazz {
+public class StudentProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    @Column(columnDefinition = "varchar(50)")
-    String name;
-    @OneToMany(mappedBy = "clazz")
-    List<Student> students;
+    String email;
+    String phone;
+    @OneToOne
+    Student student;
 }

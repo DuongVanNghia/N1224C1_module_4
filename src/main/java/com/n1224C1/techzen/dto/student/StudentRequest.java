@@ -1,11 +1,14 @@
-package com.n1224C1.techzen.model;
+package com.n1224C1.techzen.dto.student;
+
+
+//import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.n1224C1.techzen.dto.clazz.ClazzRequest;
+import com.n1224C1.techzen.model.Clazz;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-//import javax.persistence.*;
 
 @Getter
 @Setter
@@ -13,15 +16,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-@Entity
-public class Student {
-    @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+public class StudentRequest {
     String name;
     double score;
-
-    @ManyToOne
-    @JsonIncludeProperties("students")
-    Clazz clazz;
+    ClazzRequest clazz;
 }
